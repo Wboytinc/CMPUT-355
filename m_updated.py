@@ -20,8 +20,11 @@ class Maze:
 
   def __init__(self):
     self.lines = []
-    for line in stdin: 
-      self.lines.append(line.strip('\n'))
+    my_file = open("m90.txt")
+    for line in my_file:
+            line = line.replace("\n","")
+            self.lines.append(line)
+    del self.lines[-1]
     self.rows, self.cols = len(self.lines), len(self.lines[0])
     for j in range(1,self.rows-1):
       assert (self.cols == len(self.lines[j])) # each maze line has same len
@@ -34,7 +37,7 @@ class Maze:
   def showpretty(self):      
     for line in self.lines:
       for x in line:
-        print(x,' ',end='') # add spaces for readability
+        print(x,' ',end="") # add spaces for readability
       print('')
     print('') 
     sleep(.3)
